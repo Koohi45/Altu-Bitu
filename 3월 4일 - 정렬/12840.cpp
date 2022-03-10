@@ -37,11 +37,10 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int hour, min, sec;	//현재 시간
-	int q;				//쿼리 개수
+	int hour, min, sec;	
+	int q;				
 	int t;
 
-	//입력
 	cin >> hour >> min >> sec;
 	cin >> q;
 
