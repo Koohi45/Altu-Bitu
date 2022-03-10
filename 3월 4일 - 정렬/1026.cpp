@@ -6,9 +6,11 @@
 */
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
+/*
 int resorting(int n, vector<int>& a, vector<int> b)
 {
 	int ans = 0;
@@ -29,20 +31,31 @@ int resorting(int n, vector<int>& a, vector<int> b)
 
 	return ans;
 }
+*/
 
-int main()
+int resorting(int n)
 {
-	int n;
-	vector<int> a, b;
+	vector<int> a(n, 0), b(n, 0);
+	int ans = 0;
 
-	cin >> n;
-	a.assign(n, 0);
-	b.assign(n, 0);
 	for (int i = 0; i < n; i++)
 		cin >> a[i];
 	for (int i = 0; i < n; i++)
 		cin >> b[i];
 
+	sort(a.begin(), a.end());
+	sort(b.begin(), b.end(), greater<>());
 
-	cout << resorting(n, a, b) << "\n";
+	for (int i = 0; i < n; i++)
+		ans += a[i] * b[i];
+
+	return ans;
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+	
+	cout << resorting(n) << "\n";
 }

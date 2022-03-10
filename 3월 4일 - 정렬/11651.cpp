@@ -4,7 +4,9 @@
 
 using namespace std;
 
-bool cmp(const pair<int, int> &a, const pair<int, int> &b)
+typedef pair<int, int> ci;
+
+bool cmp(ci &a, ci &b)
 {
 	if (a.second != b.second)
 		return a.second < b.second;
@@ -15,7 +17,7 @@ bool cmp(const pair<int, int> &a, const pair<int, int> &b)
 void sortPoint(int n)
 {
 	int x, y;
-	vector<pair<int, int>> point;
+	vector<ci> point;
 
 	for (int i = 0; i < n; i++)
 	{

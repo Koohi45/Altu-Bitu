@@ -4,14 +4,12 @@
 
 using namespace std;
 
-int main()
+long long calTip(int n)
 {
-	int n;
 	long long tip = 0;
-	vector<int> exp_tip;
+	vector<int> exp_tip(n, 0);
 
-	cin >> n;
-	exp_tip.assign(n, 0);
+	//예상 tip 입력
 	for (int i = 0; i < n; i++)
 		cin >> exp_tip[i];
 
@@ -22,6 +20,15 @@ int main()
 		if (exp_tip[i] - i > 0)
 			tip += (exp_tip[i] - i);
 	}
-		
-	cout << tip << "\n";
+
+	return tip;
+}
+
+int main()
+{
+	int n;
+	
+	cin >> n;
+			
+	cout << calTip(n) << "\n";
 }
