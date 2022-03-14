@@ -33,7 +33,7 @@ void voca(int n, int m)
 		}
 	}
 
-	//vector·Î º¹»çÇØ¼­ sort
+	//vectorë¡œ ë³µì‚¬í•´ì„œ ì •ë ¬
 	for (auto iter = map_word.begin(); iter != map_word.end(); iter++)
 	{
 		vec_word.push_back(make_pair(iter->first, iter->second));	

@@ -1,40 +1,46 @@
-/*
-* 같은 코드인데 백준에서는 시간초과가 나기도하고 안나기도 하고 그럽니다...
-* 코드를 다르게 수정하는 것이 좋을까요?
-*/
-
-
 #include <iostream>
-#include <map>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
+
+bool binarySearch(vector<int> &vec, int start, int end, int key)
+{
+	while (end >= start)
+	{
+		int mid = (start + end) / 2;
+		if (vec[mid] == key)
+			return true;
+		else if (vec[mid] > key)
+			end = mid - 1;
+		else
+			start = mid + 1;
+	}
+
+	return false;
+}
 
 void testMemory()
 {
 	int n, m, temp;
-	map<int, int> note;
+	vector<int> word;
 
 	cin >> n;
-	for (int i = 0; i < n; i++)
+	while (n--)
 	{
 		cin >> temp;
-		note[temp] = 1;
+		word.push_back(temp);
 	}
+	sort(word.begin(), word.end());
 
 	cin >> m;
-	for (int i = 0; i < m; i++)
+	while (m--) 
 	{
 		cin >> temp;
-		if (note[temp] == 1)
+		if (binarySearch(word, 0, word.size() - 1, temp))
 			cout << "1\n";
 		else
 			cout << "0\n";
-		/*
-		* 튜터링 자료에서 46 슬라이드 마무리 부분에 주어진 코드를 실행했을 때
-		* 0이 나오던데 이 부분을 그냥
-		* cout << note[temp] << "\n";
-		* 로 해도 괜찮은가요?
-		*/
 	}
 }
 
