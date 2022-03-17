@@ -8,25 +8,19 @@ int minFinger(int n, int p)
 {
 	int line, fret;
 	int ans = 0;
-	vector<stack<int>> st_vec(6);
+	vector<stack<int>> guitar(7);
 
 	for (int i = 0; i < n; i++)
 	{
 		cin >> line >> fret;
-		while (!st_vec[line - 1].empty())
-		{
-			if (st_vec[line - 1].top() <= fret)
-				break;
-
-			st_vec[line - 1].pop();
+		while (!guitar[line].empty() && guitar[line].top() > fret) {
 			ans++;
+			guitar[line].pop();
 		}
-
-		if (!st_vec[line - 1].empty() && st_vec[line - 1].top() == fret)
-			continue;
-
-		st_vec[line - 1].push(fret);
-		ans++;
+		if (guitar[line].empty() || guitar[line].top() != fret) {
+			ans++;
+			guitar[line].push(fret);
+		}
 	}
 
 	return ans;

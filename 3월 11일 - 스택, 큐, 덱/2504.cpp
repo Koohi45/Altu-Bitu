@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int sol(string &str)
+int sol(string& str)
 {
 	/* (()[[]])([]) 의 연산은
 	* 2*(2 + 3 *3) + 2*3
@@ -13,36 +13,35 @@ int sol(string &str)
 	*/
 	stack<char> st;
 	map<char, char> m;
+	map<char, int> num;
 	int sum = 0;
 	int mult = 1;
 
 	m[']'] = '[';
 	m[')'] = '(';
+	num['('] = 2;
+	num[')'] = 2;
+	num['['] = 3;
+	num[']'] = 3;
 
 	for (int i = 0; i < str.length(); i++)
 	{
 		switch (str[i])
 		{
-			case '(':
-				mult *= 2;
-				st.push(str[i]);
-				break;
-			case '[':
-				mult *= 3;
-				st.push(str[i]);
-				break;
-			case ')':
-			case ']':
-				if (st.empty() || st.top() != m[str[i]])
-					return 0;
-				if(str[i - 1] == m[str[i]])
-					sum += mult;
-				st.pop();
-				if (str[i] == ')')
-					mult /= 2;
-				else if (str[i] == ']')
-					mult /= 3;
-				break;					
+		case '(':
+		case '[':
+			mult *= num[str[i]];
+			st.push(str[i]);
+			break;
+		case ')':
+		case ']':
+			if (st.empty() || st.top() != m[str[i]])
+				return 0;
+			if (str[i - 1] == m[str[i]])
+				sum += mult;
+			st.pop();
+			mult /= num[str[i]];
+			break;
 		}
 	}
 
@@ -56,7 +55,7 @@ int sol(string &str)
 int main()
 {
 	string s;
-	
+
 	cin >> s;
 	cout << sol(s) << "\n";
 }
