@@ -13,8 +13,7 @@ int gcd(int x, int y)
 pair<int, int> gcdLcm(int n, int m)
 {
 	int a = 0, b = 0;
-	int min = n + m;
-	int temp;
+
 	for (int i = 1; n * i <= m / i; i++)
 	{
 		if (m % i == 0 && (gcd(m / i, n * i) == n))
