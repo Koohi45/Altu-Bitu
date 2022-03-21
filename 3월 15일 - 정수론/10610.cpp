@@ -4,43 +4,36 @@
 
 using namespace std;
 
-void thirty(vector<int>& arr)
-{
+string thirty(string s) {
 	/*
-	* 30ÀÇ ¹è¼ö·Á¸é 10À¸·Î ³ª´©¾îÁö¸é¼­ ³ª´©¾îÁø °ªÀÇ ¼ýÀÚÀÇ ÇÕÀÌ 3ÀÇ ¹è¼ö¸é µÈ´Ù.
-	* 30ÀÇ ¹è¼ö°¡ ÀÖÀ¸·Á¸é 0ÀÌ Æ÷ÇÔµÇ¾î¾ß ÇÏ¸ç ¸ðµç ¼öÀÇ ÇÕÀÌ 3ÀÇ ¹è¼ö¿©¾ß ÇÏ¹Ç·Î °¡Àå Å« ¼ö´Â °¡Àå Å« ¼ýÀÚºÎÅÍ ³»¸²Â÷¼øÀ¸·Î ±¸¼ºµÈ ¼öÀÌ´Ù.
+	* 30ì˜ ë°°ìˆ˜ë ¤ë©´ 10ìœ¼ë¡œ ë‚˜ëˆ„ì–´ì§€ë©´ì„œ ë‚˜ëˆ„ì–´ì§„ ê°’ì˜ ìˆ«ìžì˜ í•©ì´ 3ì˜ ë°°ìˆ˜ë©´ ëœë‹¤.
+	* 30ì˜ ë°°ìˆ˜ê°€ ìžˆìœ¼ë ¤ë©´ 0ì´ í¬í•¨ë˜ì–´ì•¼ í•˜ë©° ëª¨ë“  ìˆ˜ì˜ í•©ì´ 3ì˜ ë°°ìˆ˜ì—¬ì•¼ í•˜ë¯€ë¡œ ê°€ìž¥ í° ìˆ˜ëŠ” ê°€ìž¥ í° ìˆ«ìžë¶€í„° ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ êµ¬ì„±ëœ ìˆ˜ì´ë‹¤.
 	*/
+
 	int sum = 0;
 
-	sort(arr.begin(), arr.end(), greater<>());	//³»¸²Â÷¼øÀ¸·Î sorting
-	if (arr[arr.size() - 1] != 0)	//10À¸·Î ³ª´©¾îÁ®¾ß ÇÔÀ¸·Î ³¡ÀÚ¸®´Â 0ÀÌ¾î¾ß ÇÔ
+	sort(s.begin(), s.end(), greater<>());	//ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ sorting
+	if (s[s.size() - 1] != '0')	//10ìœ¼ë¡œ ë‚˜ëˆ„ì–´ì ¸ì•¼ í•¨ìœ¼ë¡œ ëìžë¦¬ëŠ” 0ì´ì–´ì•¼ í•¨
 	{
-		cout << -1 << "\n";
-		return;
+		return  "-1";
 	}
 
-	for (int i = 0; i < arr.size(); i++)
-		sum += arr[i];
+	for (int i = 0; i < s.size(); i++)
+		sum += s[i] - '0';
 
-	if (sum % 3 != 0)	//ÇÕÀÌ 3ÀÇ ¹è¼ö°¡ ¾Æ´Ï¸é 30ÀÇ ¹è¼ö°¡ ¾Æ´Ô
+	if (sum % 3 != 0)	//í•©ì´ 3ì˜ ë°°ìˆ˜ê°€ ì•„ë‹ˆë©´ 30ì˜ ë°°ìˆ˜ê°€ ì•„ë‹˜
 	{
-		cout << -1 << "\n";
-		return;
+		return "-1";
 	}
 
-	for (int i = 0; i < arr.size(); i++)
-		cout << arr[i];
-	cout << "\n";
+	return s;
 }
 
 int main()
 {
 	string s;
-	vector<int> arr;
-	
 	cin >> s;
-	for (int i = 0; i < s.length(); i++)
-		arr.push_back(s[i] - '0');
 
-	thirty(arr);
+	string ans = thirty(s);
+	cout << ans << "\n";
 }

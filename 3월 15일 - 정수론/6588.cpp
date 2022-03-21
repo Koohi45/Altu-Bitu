@@ -6,19 +6,19 @@ using namespace std;
 
 const int MAX = 1e6;
 
-//MAX±îÁö ¼Ò¼ö Ã£¾Æ¼­ ¹ÝÈ¯
+//MAXê¹Œì§€ ì†Œìˆ˜ ì°¾ì•„ì„œ ë°˜í™˜
 vector<bool> findAllPrime() {
 	vector<bool> is_prime(MAX + 1, true);
 
 	is_prime[0] = is_prime[1] = false;
 	for (int i = 2; i * i <= MAX; i++)
 	{
-		if (is_prime[i])
+		if (!is_prime[i])
+			continue;
+
+		for (int j = i * i; j <= MAX; j += i)
 		{
-			for (int j = i * i; j <= MAX; j += i)
-			{
-				is_prime[j] = false;
-			}
+			is_prime[j] = false;
 		}
 	}
 	return is_prime;
@@ -27,19 +27,17 @@ vector<bool> findAllPrime() {
 string conjecture(int n, vector<bool>& p)
 {
 	string ans = to_string(n) + " = ";
-	for (int i = 3; i < n; i++)
+	for (int i = 3; i <= n / 2; i++)
 	{
-		int j = n - i;
-		if (p[i] && p[j])
+		if (p[i] && p[n - i])
 		{
-			ans += to_string(i) + " + " + to_string(j);
+			ans += to_string(i) + " + " + to_string(n - i);
 			return ans;
-		}		
+		}
 	}
 
 	return  "Goldbach's conjecture is wrong.";
 }
-
 int main()
 {
 	ios_base::sync_with_stdio(false);
@@ -47,7 +45,7 @@ int main()
 	cout.tie(NULL);
 
 	int n;
-	
+
 	auto prime = findAllPrime();
 
 	while (cin >> n)
