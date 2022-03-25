@@ -40,7 +40,7 @@ int baseball(map<string, ci>& m)
 {
 	int answer = 0;
 	int cnt;
-	for (int i = 123; i < 1000; i++) {
+	for (int i = 123; i <= 987; i++) {
 		string temp = to_string(i);
 		cnt = 0;
 
