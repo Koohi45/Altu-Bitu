@@ -21,8 +21,8 @@ int newBlackJack(int n, int m, vector<int>& card)
 			}
 		}
 		
-		if (temp > answer && temp <= m)
-			answer = temp;
+		if (temp <= m)
+			answer = max(answer, max);
 	} while (prev_permutation(comb.begin(), comb.end()));
 
 	return answer;
