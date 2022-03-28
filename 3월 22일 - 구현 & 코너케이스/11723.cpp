@@ -1,49 +1,51 @@
 #include <iostream>
-#include <set>
+#include <vector>
 
 using namespace std;
 
+
 int main()
 {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
 	int m, num;
 	string cmd;
-	set<int> s, all;
-	
-	for (int i = 1; i <= 20; i++)
-		all.insert(i);
-
+	vector<bool> check(21, false);
 
 	cin >> m;
 	for (int i = 0; i < m; i++) {
 		cin >> cmd;
+		if (cmd == "all") {
+			for (int j = 1; j <= 20; j++)
+				check[j] = true;
+			continue;
+		}
+		else if (cmd == "empty") {
+			for (int j = 1; j <= 20; j++)
+				check[j] = false;
+			continue;
+		}
+
+		cin >> num;
 		if (cmd == "add") {
-			cin >> num;
-			s.insert(num);
+			check[num] = true;
 		}
 		else if (cmd == "remove") {
-			cin >> num;
-			s.erase(num);
+			check[num] = false;
 		}
 		else if (cmd == "check") {
-			cin >> num;
-			if (s.find(num) != s.end())
+			if (check[num])
 				cout << "1" << "\n";
 			else
 				cout << "0" << "\n";
 		}
 		else if (cmd == "toggle") {
-			cin >> num;
-			if (s.find(num) != s.end())
-				s.erase(num);
+			if (check[num])
+				check[num] = false;
 			else
-				s.insert(num);
-		}
-		else if (cmd == "all") {
-			s = all;
-		}
-		else if (cmd == "empty") {
-			s.clear();
+				check[num] = true;
 		}
 	}
-
 }

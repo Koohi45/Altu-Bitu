@@ -5,18 +5,21 @@ using namespace std;
 
 typedef pair<int, int> ci;
 
-int compute(int a, int b) 
+int compute(int a, int b)
 {
-	int ans = 1;
-	for (int i = 0; i < b; i++) {
-		ans *= a;
-		ans %= 10;
-	}
-	
-	if (ans == 0)
-		return 10;
+	int temp = a;
+	vector<int> units;
 
-	return ans;
+	while (true) {
+		units.push_back(temp % 10);
+		temp = (temp * a) % 10;
+		if (units[0] == temp)
+			break;
+	}
+
+	int answer = units[(b - 1) % units.size()];
+	if (answer == 0)	return 10;
+	return answer;
 }
 
 int main()
