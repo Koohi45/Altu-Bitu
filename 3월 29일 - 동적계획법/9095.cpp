@@ -5,7 +5,7 @@ using namespace std;
 
 int numOfSum(int n)
 {
-	vector<int> dp(n + 1, 0);
+	vector<int> dp(12, 0);
 
 	dp[1] = 1;
 	dp[2] = 2;
