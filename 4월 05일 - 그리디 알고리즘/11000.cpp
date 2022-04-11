@@ -1,4 +1,3 @@
-/*처음에는 주석에 있는 것처럼 작성하였는데 시간초과가 나더라구요. for문안에 있는 또 다른 for문 때문에 그런 것일까요?*/
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -24,28 +23,6 @@ int countRoom(vector<ci>& lecture, int n)
 	}
 	
 	return min_heap.size();
-	/*
-	vector<int> count;	//인덱스 : 강의실 번호, 저장되는 값 : 마지막 강의가 끝나는 시간
-	count.push_back(lecture[0].second);
-
-	for (int i = 1; i < n; i++) {
-		int start = lecture[i].first;
-		int end = lecture[i].second;
-		bool flag = true;
-
-		for (int j = 0; j < count.size(); j++) {
-			if (start >= count[j]) {
-				count[j] = end;
-				flag = false;
-				break;
-			}
-		}
-		if (flag)
-			count.push_back(end);
-	}
-
-	return count.size();
-	*/
 }
 
 int main()

@@ -10,10 +10,7 @@ void operate(vec& a, int row, int col)
 {
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
-			if (a[row + i][col + j] == 1)
-				a[row + i][col + j] = 0;
-			else
-				a[row + i][col + j] = 1;
+			a[row + i][col + j] = a[row + i][col + j] == 1 ? 0 : 1;
 		}
 	}
 }

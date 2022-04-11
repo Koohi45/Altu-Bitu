@@ -5,8 +5,7 @@ using namespace std;
 
 long long minCost(vector<int>& dist, vector<int>& liter, int n)
 {
-	long long m = liter[0];	//질문 : m을 최소 liter당 가격이라고 하고 liter당 가격이 최대 1,000,000,000이므로 int로 했는데 백준에서 58점으로 나옵니다. 
-							//왜 long long으로 해야 모두 맞았다고 하는지 알 수 있을까요?
+	long long m = liter[0];	
 	long long answer = m * dist[0];
 	for (int i = 1; i < n - 1; i++){
 		if (m > liter[i])
