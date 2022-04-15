@@ -1,4 +1,3 @@
-/*
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -48,4 +47,3 @@ int main()
 	cout << maxLength(1, snack[n - 1], m, snack) << '\n';
 	return 0;
 }
-*/
