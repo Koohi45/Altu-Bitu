@@ -3,18 +3,19 @@
 #include <algorithm>
 
 using namespace std;
-const long long INF = 3e9 + 1;
+typedef long long ll;
+const ll INF = 3e9 + 1;
 
 vector<int> findLiquid(int n, vector<int>& liquid)
 {
 	vector<int> ans(3);
-	long long min_mix = INF;
+	ll min_mix = INF;
 
 	for (int i = 0; i < n - 2; i++) {	//제일 왼쪽을 고정
 		int left = i + 1, right = n - 1;
 
 		while (left < right) {
-			long long mix = (long long)liquid[i] + liquid[left] + liquid[right];
+			ll mix = (ll)liquid[i] + liquid[left] + liquid[right];
 			if (abs(mix) < min_mix) {
 				min_mix = abs(mix);
 				ans[0] = liquid[i];

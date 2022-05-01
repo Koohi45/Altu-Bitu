@@ -4,34 +4,39 @@
 
 using namespace std;
 
+bool isGood(vector<int>& num, int n, int idx)
+{
+	int left = 0, right = n - 1;
+	while (left < right) {
+		int sum = num[left] + num[right];
+		if (left == idx) {
+			left++;
+			continue;
+		}
+		if (right == idx) {
+			right--;
+			continue;
+		}
+
+		if (sum == num[idx]) {
+			return true;
+		}
+		else if (sum > num[idx]) {
+			right--;
+		}
+		else {
+			left++;
+		}
+	}
+	return false;
+}
+
 int numOfGood(int n, vector<int>& num) 
 {
 	int ans = 0;
 	for (int i = 0; i < n; i++) {
-		int left = 0, right = n - 1;
-
-		while (left < right) {
-			int sum = num[left] + num[right];
-			if (left == i) {
-				left++;
-				continue;
-			}
-			if (right == i) {
-				right--;
-				continue;
-			}
-
-			if (sum == num[i]) {
-				ans++;
-				break;
-			}
-			else if (sum > num[i]) {
-				right--;
-			}
-			else {
-				left++;
-			}
-		}
+		if (isGood(num, n, i))
+			ans++;
 	}
 
 	return ans;
